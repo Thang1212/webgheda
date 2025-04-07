@@ -1,0 +1,50 @@
+<%- get_layout("header") %>
+    <div id="content" class="mt-2 mb-2">
+        <%- get_layout("slider") %>
+            <div id="products" class="mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <%- get_layout("feature_product") %>
+                        </div>
+                        <div class="col-md-9">
+                            <%- get_layout("support") %>
+                                <div class="section-detail mt-5" id="product-item">
+                                    <div class="container">
+                                        <h1 class="text-center ">Sản phẩm</h1>
+                                        <div class="row">
+                                            <div class=" col-md-4 mb-4 col-sm-6 col-12 ">
+                                                <div class="product p-1 py-2">
+                                                    <a href="san-pham/ghe-da-cong-vien/1">
+                                                        <img class="img-fluid" src="images/product-1.jpg" alt="">
+                                                    </a>
+                                                    <div class="sub text-center">
+                                                        <a href="san-pham/ghe-da-cong-vien/1" class="text-decoration-none">Lorem ipsum
+                                                            dolor sit
+                                                            amet consectetur</a>
+                                                        <p>2.000.000 <span
+                                                                class="text-decoration-line-through fw-light">3.000.000</span>
+                                                        </p>
+                                                        <button class=" border-1 border-danger bg-light text-danger">ĐẶT
+                                                            MUA</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="section-footer">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <%- get_layout("pagination") %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <%- get_layout("footer") %>
