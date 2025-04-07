@@ -42,15 +42,3 @@ This project follows the **MVC (Model-View-Controller)** architecture to ensure 
 
 This MVC structure ensures that the application is modular, scalable, and easy to maintain.
 
-## Demo
-Watch the demo video:
-
-[Click here to view the demo](https://drive.google.com/file/d/FILE_ID/view?usp=sharing)
-
-## Getting Started
-To run this project locally, follow these steps:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/webdevcody/get-social.git
-   cd get-social
