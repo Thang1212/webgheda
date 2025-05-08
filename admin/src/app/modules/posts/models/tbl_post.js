@@ -12,6 +12,8 @@ const PostSchema = new mongoose.Schema(
             enum: ['draft', 'published', 'pending', 'archived'],
             default: 'draft',
         },
+        category_id: [{ type: mongoose.Schema.Types.ObjectId, ref: "tbl_post_cat" }], // Liên kết với danh mục  // ObjectId("65f123456789abcd12345678")
+
         admin_id: { type: mongoose.Schema.Types.ObjectId, ref: 'tbl_admin' }, // ✅ Fix lỗi Schema không được định nghĩa
     },
     { timestamps: true }

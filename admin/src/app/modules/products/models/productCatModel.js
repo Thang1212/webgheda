@@ -6,7 +6,7 @@ const addProductCat = async (productCatData) => {
 };
 
 const getProductCat = async () => {
-    return await tbl_product_cat.find().populate("admin_id","username");
+    return await tbl_product_cat.find().populate("admin_id","username").sort({ createdAt: -1 });
 }
 const getProductCatId = async (id) => {
     return await tbl_product_cat.findById(id).populate("admin_id","username").lean()

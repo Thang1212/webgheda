@@ -17,6 +17,9 @@ router.get("/add", pageController.add_page);
 // 3. Xử lý thêm page
 router.post('/add', upload.single('thumb_img'), pageController.create_page);
 
+router.get("/search", pageController.search_page); // Trang chính (mặc định là trang 1)
+// router.get("/search/page/:id", pageController.search_page);
+router.post("/search", pageController.search); // Trang chính (mặc định là trang 1)
 
 // 4. Trang form sửa page
 router.get("/edit/:id", pageController.edit_page);
@@ -26,6 +29,10 @@ router.post("/edit/:id", pageController.update_page);
 
 // 6. Xóa page
 router.get("/delete/:id", pageController.delete_page);
+
+
+router.post("/slug", pageController.create_slug);
+
 
 // ===============================
 

@@ -1,4 +1,4 @@
-const { get_layout } = require("@helper/template");
+// const { get_layout } = require("@helper/template");
 const tbl_restPass = require("../models/tbl_restPass");
 const Admin = require("../../login/models/tbl_admin");
 
@@ -12,7 +12,6 @@ exports.rest_pass = async (req, res) => {
 
         const data = {
             // cat_name,
-            get_layout,
         }
         // console.log(products); // Kiểm tra toàn bộ danh sách sản phẩm
         res.render("rest_pass", data);
@@ -51,7 +50,6 @@ exports.rest_pass_mail = async (req, res) => {
         await sendEmail(email, resetLink);
 
         return res.render("rest_pass", {
-            get_layout,
             message: "🎉 Vui lòng kiểm tra email để đặt lại mật khẩu."
         });
     } catch (error) {
@@ -82,7 +80,6 @@ exports.check_token = async (req, res) => {
 
         // Token hợp lệ, render trang thay đổi mật khẩu
         return res.render("change_pass", {
-            get_layout,
             user_id: user._id,
             token: token
         });

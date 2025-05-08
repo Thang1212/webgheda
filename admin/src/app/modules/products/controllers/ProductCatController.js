@@ -1,4 +1,4 @@
-const { get_layout } = require("@helper/template");
+// const { get_layout } = require("@helper/template");
 const { formatDate } = require("@helper/format"); // Import helper
 const { addProductCat,
     getProductCat,
@@ -12,7 +12,6 @@ exports.list_product_cat = async (req, res) => {
     try {
         const product_cat = await getProductCat();
         const data = {
-            get_layout,
             product_cat,
         };
         res.render("list_product_cat", data);
@@ -23,7 +22,7 @@ exports.list_product_cat = async (req, res) => {
 };
 // Hiện giao diện thêm sản phẩm
 exports.show_add_product_cat = async (req, res) => {
-    res.render("add_product_cat", { get_layout });
+    res.render("add_product_cat");
 };
 
 // ========= add========
@@ -38,14 +37,14 @@ exports.add_product_cat = async (req, res) => {
         const productCatData = {
             category_name: title,
             category_slug: slug,
-            admin_id: req.session.user.id, // ✅ Lưu ObjectId của admin
+            admin_id: req.session.admin.id, // ✅ Lưu ObjectId của admin
         };
         await addProductCat(productCatData);
         res.redirect("/sanpham/danhmuc");
         // res.render("add_product_cat", { get_layout, message: "Sản phẩm đã được thêm thành công!" });
     } catch (error) {
         console.error(error);
-        res.render("add_product_cat", { get_layout, error: error.message || "Có lỗi xảy ra!" });
+        res.render("add_product_cat", { error: error.message || "Có lỗi xảy ra!" });
     }
 };
 
@@ -57,7 +56,7 @@ exports.edit_product_cat = async (req, res) => {
         const id = req.params.id;
         // Kiểm tra xem sản phẩm có tồn tại không
         const productCatId = await getProductCatId(id);
-        const data = { get_layout, productCatId, formatDate };
+        const data = { productCatId, formatDate };
         res.render("edit_product_cat", data); // Render trang chỉnh sửa
     } catch (error) {
         console.error(error);
@@ -84,7 +83,7 @@ exports.update_product_cat = async (req, res) => {
         // Lấy lại sản phẩm sau khi cập nhật
         productCatId = await getProductCatId(id);
         // Kiểm tra xem sản phẩm có tồn tại không
-        const data = { get_layout, productCatId, formatDate };
+        const data = { productCatId, formatDate };
         res.render("edit_product_cat", data); // Render trang chỉnh sửa
     } catch (error) {
         console.error(error);

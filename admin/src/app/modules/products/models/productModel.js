@@ -34,7 +34,9 @@ const getProductsPaging = async (page = 1, perPage = 10) => {
         .find()
         .populate("admin_id", "username")
         .skip((page - 1) * perPage)
-        .limit(perPage);
+        .limit(perPage)
+        .sort({ createdAt: -1 })
+        .populate('category_id'); // hoặc 'categories' nếu bạn đổi tên field;
 };
 // Đếm tổng sản phẩm
 const countProduct = async () => {

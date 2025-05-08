@@ -17,7 +17,7 @@ const tbl_product = new mongoose.Schema(
         },
         featured_image: { type: String },   // Ảnh hiển thị
         product_images: { type: [String] }, // Lưu danh sách ảnh
-        category_id: { type: mongoose.Schema.Types.ObjectId, ref: "tbl_product_cat" }, // Liên kết với danh mục  // ObjectId("65f123456789abcd12345678")
+        category_id: [{ type: mongoose.Schema.Types.ObjectId, ref: "tbl_product_cat" }], // Liên kết với danh mục  // ObjectId("65f123456789abcd12345678")
         admin_id: { type: mongoose.Schema.Types.ObjectId, ref: 'tbl_admin' }, 
 
     },

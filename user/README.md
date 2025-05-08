@@ -3,6 +3,7 @@
 `npm install mongoose`
 `npm install module-alias` 
 `npm i colors nodemon morgan dotenv cors`
+`npm install slugify`
 /*
   "_moduleAliases": {
     "@helper": "./src/helper",

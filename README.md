@@ -1,6 +1,5 @@
 # E-commerce website 
 
-
 ## Technologies Used
 This project leverages modern web development tools and frameworks to deliver a smooth experience:
 - **Node.js**: A JavaScript runtime for building scalable server-side applications.
@@ -41,4 +40,9 @@ This project follows the **MVC (Model-View-Controller)** architecture to ensure 
   5. The **View** renders the HTML and sends it back to the **Browser** for display.
 
 This MVC structure ensures that the application is modular, scalable, and easy to maintain.
+
+## Demo 
+![Home page](assets/homepage.png)
+
+![Post page](assets/postpage.png)
 

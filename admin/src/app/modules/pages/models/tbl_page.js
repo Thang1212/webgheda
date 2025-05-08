@@ -9,7 +9,6 @@ const pageSchema = new mongoose.Schema({
   },
   page_slug: {
     type: String,
-    required: true,
     maxlength: 120,
   },
   page_content: {

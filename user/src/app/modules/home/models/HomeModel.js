@@ -1,5 +1,5 @@
-const tbl_product = require("./tbl_product");
-
+const tbl_product = require("../../../../database/tbl_product");
+// C:\Users\Admin\Downloads\tich_hop_he_thong\Nhom4\BTNhom\user\src\database
 // const getProducts = async () => {
 //     return await tbl_product.find({ product_status: "active" });
 // }

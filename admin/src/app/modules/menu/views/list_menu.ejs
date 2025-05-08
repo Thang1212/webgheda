@@ -1,153 +1,54 @@
-<%- get_layout("header", {user: user}) %>
+<%- get_layout("header") %>
 
-    <div id="content" class="mt-2 mb-2">
-        <div class="row">
-            <div class="col-md-3 border-right">
-                <%- get_layout("sidebar") %>
+  <div id="content" class="mt-2 mb-2">
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <%- get_layout("sidebar") %>
+      </div>
+      <div class="col-md-8">
+        <div class="col-md-12">
+          <div id="main-content-wp" class="cart-page">
+            <div class="section" id="info-cart-wp">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên menu</th>
+                    <th>Vị trí hiển thị</th>
+                    <th>Người Tạo</th>
+                    <th>Thời gian</th>
+                    <th>Cập nhật</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% menus.forEach((menu, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <ul class="list-inline">
+                          <li class="list-inline-item">
+                            <a href="/menu/edit/<%= menu._id %>" title="" class="name-product"><%= menu.title %></a>
+                          </li>
+                          <li class="list-inline-item">
+                            <a href="/menu/edit/<%= menu._id %>" title="" class="update-product"><i class="fa-solid fa-pencil"></i></a>
+                          </li>
+                          <li class="list-inline-item">
+                            <a href="/menu/delete/<%= menu._id %>" title="" class="del-product"><i class="fa-solid fa-trash"></i></a>
+                          </li>
+                        </ul>
+                      </td>
+                      <td> <%= menu.select_menu?.position_name || menu.select_menu %></td>
+                      <td><%= menu.admin_id?.username || "Không rõ" %></td>
+                      <td><%= new Date(menu.createdAt).toLocaleString("vi-VN") %></td>
+                      <td><%= new Date(menu.updatedAt).toLocaleString("vi-VN") %></td>
+                    </tr>
+                  <% }) %>
+                </tbody>
+              </table>
             </div>
-            <div class="col-md-8">
-                <div class="col-md-12">
-                    <div id="main-content-wp" class="cart-page">
-                        <div class="section" id="info-cart-wp">
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th>STT</th>
-                                    <th>Mã</th>
-                                    <th>Tiêu đề</th>
-                                    <th>Trạng thái</th>
-                                    <th>Người Tạo</th>
-                                    <th>Thời gian tạo</th>
-                                    <th>Cập nhật</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>HCA00031</td>
-                                    <td>
-                                      <ul class="list-inline">
-                                        <li class="list-inline-item"> <a href="" title="" class="name-product">Sony Express X6</a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="" title="" class="update-product"><i
-                                              class="fa-solid fa-pencil"></i></a></li>
-                                        <li class="list-inline-item"> <a href="" title="" class="del-product"><i
-                                              class="fa-solid fa-trash"></i></a></li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      Đã đăng
-                                    </td>
-                                    <td>maithuc</td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>HCA00031</td>
-                                    <td>
-                                      <ul class="list-inline">
-                                        <li class="list-inline-item"> <a href="" title="" class="name-product">Sony Express X6</a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="" title="" class="update-product"><i
-                                              class="fa-solid fa-pencil"></i></a></li>
-                                        <li class="list-inline-item"> <a href="" title="" class="del-product"><i
-                                              class="fa-solid fa-trash"></i></a></li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      Đã đăng
-                                    </td>
-                                    <td>maithuc</td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>HCA00031</td>
-                                    <td>
-                                      <ul class="list-inline">
-                                        <li class="list-inline-item"> <a href="" title="" class="name-product">Sony Express X6</a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="" title="" class="update-product"><i
-                                              class="fa-solid fa-pencil"></i></a></li>
-                                        <li class="list-inline-item"> <a href="" title="" class="del-product"><i
-                                              class="fa-solid fa-trash"></i></a></li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      Đã đăng
-                                    </td>
-                                    <td>maithuc</td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>HCA00031</td>
-                                    <td>
-                                      <ul class="list-inline">
-                                        <li class="list-inline-item"> <a href="" title="" class="name-product">Sony Express X6</a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="" title="" class="update-product"><i
-                                              class="fa-solid fa-pencil"></i></a></li>
-                                        <li class="list-inline-item"> <a href="" title="" class="del-product"><i
-                                              class="fa-solid fa-trash"></i></a></li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      Đã đăng
-                                    </td>
-                                    <td>maithuc</td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>HCA00031</td>
-                                    <td>
-                                      <ul class="list-inline">
-                                        <li class="list-inline-item"> <a href="" title="" class="name-product">Sony Express X6</a>
-                                        </li>
-                                        <li class="list-inline-item"> <a href="" title="" class="update-product"><i
-                                              class="fa-solid fa-pencil"></i></a></li>
-                                        <li class="list-inline-item"> <a href="" title="" class="del-product"><i
-                                              class="fa-solid fa-trash"></i></a></li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      Đã đăng
-                                    </td>
-                                    <td>maithuc</td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                    <td>
-                                      19/20/2003
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <%- get_layout("footer") %>
+  </div>
+  <%- get_layout("footer") %>

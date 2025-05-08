@@ -1,96 +1,75 @@
 <%- get_layout("header") %>
-    <div id="content" class="mt-2 mb-2">
-        <div id="products" class="mt-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <%- get_layout("feature_product", { featured_products }) %>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="section-detail" id="product-item">
-                            <div id="main-content-wp" class="category-news-page">
-                                <div id="wrapper" class="clearfix wp-inner">
-                                    <div class="section mb-3" id="list-news-wp">
-                                        <div class="section-detail">
-                                            <ul class="list-group" id="news">
-                                                <li class="list-group-item clearfix border-0">
-                                                    <a href="bai-viet/1" class="thumb float-left mr-3"><img
-                                                            src="images/product-1.jpg" alt=""></a>
-                                                    <div class="info">
-                                                        <div class="info fl-right">
-                                                            <a href="bai-viet/1" title="" class="title">Hướng
-                                                                dẫn nuôi dạy trẻ khoa học
-                                                            </a>
-                                                            <a href="bai-viet/1" class="detail">
-                                                                <p class="create-date m-0">29/12/2016</p>
-                                                                <p class="desc ">Lorem Ipsum chỉ đơn giản là một
-                                                                    đoạn
-                                                                    văn
-                                                                    bản giả, được dùng vào việc trình bày và dàn
-                                                                    trang
-                                                                    phục vụ cho in ấn. Lorem Ipsum đã được sử
-                                                                    dụng
-                                                                    như
-                                                                    một văn bản chuẩn cho ngành công nghiệp in
-                                                                    ấn từ
-                                                                    những năm 1500, khi một họa sĩ vô danh ghép
-                                                                    nhiều
-                                                                    đoạn văn bản với nhau để tạo thành một bản
-                                                                    mẫu
-                                                                    văn
-                                                                    bản.</p>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item clearfix border-0">
-                                                    <a href="bai-viet/1" class="thumb float-left mr-3"><img
-                                                            src="images/product-1.jpg" alt=""></a>
-                                                    <div class="info">
-                                                        <div class="info fl-right">
-                                                            <a href="bai-viet/1" title="" class="title">Hướng
-                                                                dẫn nuôi dạy trẻ khoa học
-                                                            </a>
-                                                            <a href="bai-viet/1" class="detail">
-                                                                <p class="create-date m-0">29/12/2016</p>
-                                                                <p class="desc ">Lorem Ipsum chỉ đơn giản là một
-                                                                    đoạn
-                                                                    văn
-                                                                    bản giả, được dùng vào việc trình bày và dàn
-                                                                    trang
-                                                                    phục vụ cho in ấn. Lorem Ipsum đã được sử
-                                                                    dụng
-                                                                    như
-                                                                    một văn bản chuẩn cho ngành công nghiệp in
-                                                                    ấn từ
-                                                                    những năm 1500, khi một họa sĩ vô danh ghép
-                                                                    nhiều
-                                                                    đoạn văn bản với nhau để tạo thành một bản
-                                                                    mẫu
-                                                                    văn
-                                                                    bản.</p>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="section-footer">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <%- get_layout("pagination") %>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+  <div id="content" class="mt-2 mb-2">
+    <div id="products" class="mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <%- get_layout("feature_product") %>
+          </div>
+          <div class="col-md-9">
+            <div class="section-detail" id="product-item">
+              <div id="main-content-wp" class="category-news-page">
+                <div id="wrapper" class="clearfix wp-inner">
+                  <div class="section mb-3" id="list-news-wp">
+                    <div class="section-detail">
+                      <ul class="list-group" id="news">
+                        <% posts.forEach((post) => { %>
+                          <li class="list-group-item clearfix border-0">
+                            <a href="/bai-viet/<%= post._id %>.html" class="thumb float-left mr-3">
+                              <img src="<%= BASE_URL %><%= post.post_image %>" alt="<%= post.post_title %>">
+                            </a>
+                            <div class="info">
+                              <a href="/bai-viet/<%= post._id %>.html" class="title d-block mb-1">
+                                <%= post.post_title %>
+                              </a>
+                              <p class="create-date m-0 text-muted">
+                                <%= post.createdAt.toLocaleDateString("vi-VN") %>
+                              </p>
+                              <p class="desc mb-0">
+                                <%- post.post_excerpt || (post.post_content.slice(0, 200) + "...") %>
+                              </p>
                             </div>
-                        </div>
+                          </li>
+                        <% }); %>
+                      </ul>
                     </div>
+                    <div class="section-footer">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <nav>
+                            <ul class="pagination pagination-sm justify-content-center">
+                              <% if (currentPage> 1) { %>
+                                <li class="page-item">
+                                 
+                                  <a href=" /bai-viet/<%= category.category_slug %>/<%= category._id %>/page/<%= currentPage - 1 %>" class="page-link">&laquo;</a>
+                                </li>
+                                <% } %>
+
+                                  <% for (let i=1; i <=totalPages; i++) { %>
+                                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                      <a href="/bai-viet/<%= category.category_slug %>/<%= category._id %>/page/<%= i %>" class="page-link">
+                                        <%= i %>
+                                      </a>
+                                    </li>
+                                    <% } %>
+
+                                      <% if (currentPage < totalPages) { %>
+                                        <li class="page-item">
+                                          <a href="/bai-viet/<%= category.category_slug %>/<%= category._id %>/page/<%= currentPage + 1 %>" class="page-link">&raquo;</a>
+                                        </li>
+                                        <% } %>
+                            </ul>
+                          </nav>
+                        </div>
+                      </div>
+                    </div>
+                  </div> <!-- end #list-news-wp -->
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    <%- get_layout("footer") %>
+  </div>
+  <%- get_layout("footer") %>

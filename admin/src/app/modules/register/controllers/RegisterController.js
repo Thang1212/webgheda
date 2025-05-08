@@ -1,12 +1,11 @@
 const Admin = require("../../login/models/tbl_admin");
-const { get_layout } = require("@helper/template");
 
 const { mongooseToObject } = require('../utils/mongoose');
 const bcrypt = require('bcrypt');
 
 // [GET] /dang-ky
 exports.index = async (req, res, next) => {
-    res.render("register", { get_layout });
+    res.render("register");
 }
 
 exports.create_user = async (req, res, next) => {
@@ -16,13 +15,13 @@ exports.create_user = async (req, res, next) => {
         // Kiểm tra nếu password không khớp
         if (password !== confirm_password) {
             // return res.status(400).send("Mật khẩu nhập lại không khớp!");
-            return res.render("register", { get_layout, password_error: "Mật khẩu nhập lại không khớp!" });
+            return res.render("register", { password_error: "Mật khẩu nhập lại không khớp!" });
         }
         // Kiểm tra xem username hoặc email đã tồn tại chưa
         const existingUser = await Admin.findOne({ $or: [{ username }, { email }] });
         if (existingUser) {
             // return res.status(400).send("Tên đăng nhập hoặc email đã tồn tại!");
-            return res.render("register", { get_layout, error: "Tên đăng nhập hoặc email đã tồn tại!" });
+            return res.render("register", { error: "Tên đăng nhập hoặc email đã tồn tại!" });
         }
 
         // Lấy user_id lớn nhất hiện tại, tăng lên 1
@@ -34,6 +33,7 @@ exports.create_user = async (req, res, next) => {
         const newUser = new Admin({
             user_id: newUserId,
             username,
+            phone,
             email,
             password_hash: password, // Đổi từ password sang password_hash
             fullname,

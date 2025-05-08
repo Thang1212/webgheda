@@ -1,4 +1,4 @@
-const { get_layout } = require("@helper/template");
+// const { get_layout } = require("@helper/template");
 const { formatDate } = require("@helper/format"); // Import helper
 const tbl_slider = require("../models/tbl_slider");
 const { deleteOldImage } = require("../models/SliderModel");
@@ -24,7 +24,6 @@ exports.list_slider = async (req, res) => {
     });
     console.log(sliders);
     const data = {
-      get_layout,
       sliders, // truyền vào view
       formatDate,
       currentPage: slider,
@@ -41,7 +40,6 @@ exports.list_slider = async (req, res) => {
 // 2. Hiện giao diện thêm Page
 exports.add_slider = (req, res) => {
   const data = {
-    get_layout
   };
   res.render("add_slider", data);
 };
@@ -67,7 +65,7 @@ exports.create_slider = async (req, res) => {
       slider_content: detail,
       slider_status: status,
       slider_image, // ✅ Lưu ảnh
-      admin_id: req.session.user.id, // ✅ Lưu ObjectId của admin
+      admin_id: req.session.admin.id, // ✅ Lưu ObjectId của admin
 
     });
     await newPage.save();
@@ -87,7 +85,6 @@ exports.edit_slider = async (req, res) => {
       return res.status(404).send("Không tìm thấy slider!");
     }
     const data = {
-      get_layout,
       slider,
       formatDate,
     };
@@ -125,7 +122,6 @@ exports.update_slider = async (req, res) => {
     slider = await tbl_slider.findById(req.params.id).populate('admin_id', 'username');
 
     const data = {
-      get_layout,
       slider,
       formatDate,
     };

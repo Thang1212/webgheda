@@ -16,6 +16,9 @@ router.post("/edit/:id", upload.array("thumb_img", 20), productController.update
 // Xóa
 router.get("/delete/:id", productController.delete_product);
 
+router.get("/search", productController.list_search); // Trang chính (mặc định là trang 1)
+// router.get("/search/page/:id", productController.list_search);  
+router.post("/search", productController.search); // Trang chính (mặc định là trang 1)
 
 
 // ============  Danh mục sản phẩm ============ 

@@ -8,6 +8,7 @@ const AdminSchema = new Schema(
     {
         user_id: { type: Number, unique: true, required: true },
         username: { type: String, required: true, unique: true, maxlength: 20 },
+        phone: { type: String, maxlength: 20 },
         email: { type: String, required: true, unique: true, maxlength: 50 },
         password_hash: { type: String, required: true },
         fullname: { type: String, required: true, maxlength: 100 },

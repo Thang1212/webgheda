@@ -1,4 +1,3 @@
-const { get_layout } = require("@helper/template"); // == ko xóa ==
 const { getProductsPaging ,countProduct } = require("../models/homeModel");
 exports.home_page = async (req, res) => {
     const perPage = 12; // Số sản phẩm trên mỗi trang
@@ -7,7 +6,7 @@ exports.home_page = async (req, res) => {
     const list_product = await getProductsPaging(page, perPage);
     // console.log(list_product);
     const data = {
-        get_layout,
+        // get_layout,
         list_product,
         currentPage: page,
         totalPages: Math.ceil(totalProducts / perPage), // Tổng số trang
